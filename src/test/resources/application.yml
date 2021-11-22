@@ -1,0 +1,28 @@
+spring:
+
+    datasource:
+        hikari:
+             minimum-idle: 1
+             maximum-pool-size: 2
+             connection-test-query: SELECT 1;
+        type: com.zaxxer.hikari.HikariDataSource
+
+        url: jdbc:postgresql://${embedded.postgresql.host}:${embedded.postgresql.port}/${embedded.postgresql.schema}
+        username: ${embedded.postgresql.user}
+        password: ${embedded.postgresql.password}
+
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+        database: POSTGRESQL
+        show-sql: true
+        properties:
+            hibernate.id.new_generator_mappings: true
+            hibernate.generate_statistics: false
+            hibernate.proc.param_null_passing: true
+#            hibernate.connection.provider_disables_autocommit: true
+#            hibernate.cache.use_second_level_cache: true
+#            hibernate.cache.use_query_cache: false
+#            hibernate.cache.region.factory_class: com.hazelcast.hibernate.HazelcastCacheRegionFactory
+#            hibernate.cache.hazelcast.instance_name: SYS
+#            hibernate.cache.use_minimal_puts: true
+#            hibernate.cache.hazelcast.use_lite_member: true
