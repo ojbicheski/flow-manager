@@ -5,7 +5,6 @@ package ca.personal.poc.manage.flow.config;
 
 import org.springframework.beans.factory.config.ServiceLocatorFactoryBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import ca.personal.poc.manage.flow.step.StepFactory;
@@ -16,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Configuration
-@ComponentScan("ca.personal.poc.manage.order.flow.create.flow")
 @Slf4j
 public class FlowStepConfiguration {
 
