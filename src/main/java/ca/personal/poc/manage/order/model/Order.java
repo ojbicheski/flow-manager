@@ -25,7 +25,8 @@ import javax.persistence.Table;
 
 import ca.personal.poc.manage.customer.model.Customer;
 import ca.personal.poc.manage.order.exception.OrderException;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Orlei Bicheski
@@ -33,7 +34,8 @@ import lombok.Data;
  */
 @Entity
 @Table(schema = "sales", name = "tb_order")
-@Data
+@Getter
+@Setter
 public class Order {
 
 	@Id
@@ -51,7 +53,7 @@ public class Order {
 	@JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id")
 	private Set<Item> items = new HashSet<>();
 	
@@ -69,6 +71,7 @@ public class Order {
 		}
 		
 		items.add(item);
+		item.setOrder(this);
 		total = total.add(item.getTotal());
 	}
 

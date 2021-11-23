@@ -14,11 +14,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import ca.personal.poc.manage.product.model.Product;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(schema = "sales", name = "tb_item")
-@Data
+@Getter
+@Setter
 public class Item {
 
 	@Id
@@ -30,7 +32,7 @@ public class Item {
 	@JoinColumn(name = "product_id", nullable = false)
 	private Product product;
 	
-	@Column(name = "quanity", nullable = false)
+	@Column(name = "quantity", nullable = false)
 	private Integer quantity;
 
 	@ManyToOne(fetch = FetchType.LAZY)

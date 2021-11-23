@@ -6,6 +6,7 @@ package ca.personal.poc.manage.order.flow.create;
 import ca.personal.poc.manage.flow.Flow;
 import ca.personal.poc.manage.order.dto.OrderDTO;
 import ca.personal.poc.manage.order.exception.OrderException;
+import ca.personal.poc.manage.order.flow.create.steps.ConfirmOrderStep;
 import ca.personal.poc.manage.order.model.Order;
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,7 +45,7 @@ public class CreateOrderFlow extends Flow<Order> {
 	public Order performOutput() {
 		super.perform();
 		log.info("Perform Output");
-		return new Order();
+		return getContext().get(ConfirmOrderStep.OUT_ORDER);
 	}
 
 }

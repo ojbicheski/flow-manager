@@ -36,8 +36,8 @@ public class OrderService {
 		Order order = new Order();
 		order.setCustomer(customer);
 		typedList(items, Item.class).forEach(item -> order.addItem(item));
-		
-		return repository.save(order);
+		repository.save(order);
+		return order;
 	}
 
 	private <T> List<T> typedList(List<?> untypedList, Class<T> itemClass) {
